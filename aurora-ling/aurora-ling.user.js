@@ -13,8 +13,8 @@ setTimeout(
 		let n = document.createElement("script");
 		n.setAttribute("language", "JavaScript");
 		n.setAttribute("crossorigin", "anonymous");
-		n.setAttribute("src", "https://github.com/HongYunCloud/mio/raw/refs/heads/main/aurora-ling/aurora-ling.js");
-		n.setAttribute("integrity", "sha512-80d862beccb7c13087ec0c1c16e7db21edc811a45207e22be0537de5a9328f3237528260a70cc1ad29775f435585fa06d5d1a962d928b6cab28444bc5cc95483");
+		n.setAttribute("src", "https://cdn.jsdelivr.net/gh/HongYunCloud/mio/aurora-ling/aurora-ling.js");
+		n.setAttribute("integrity", "sha512-z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg==");
 		n.onload = () => n.remove();
 		document.head.appendChild(n);
 	},
