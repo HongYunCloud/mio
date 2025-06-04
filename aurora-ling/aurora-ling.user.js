@@ -4,7 +4,7 @@
 // @version 1.0
 // @description aurora-ling
 // @author Razor
-// @downloadURL https://cdn.jsdelivr.net/gh/HongYunCloud/mio/aurora-ling/aurora-ling.user.js
+// @downloadURL https://github.com/HongYunCloud/mio/raw/refs/heads/main/aurora-ling/aurora-ling.user.js
 // @match https://www.bondage-europe.com/R*
 // @grant none
 // @run-at document-end
@@ -14,7 +14,7 @@ setTimeout(
 		let n = document.createElement("script");
 		n.setAttribute("language", "JavaScript");
 		n.setAttribute("crossorigin", "anonymous");
-		n.setAttribute("src", "https://cdn.jsdelivr.net/gh/HongYunCloud/mio/aurora-ling/aurora-ling.js");
+		n.setAttribute("src", "https://cdn.jsdelivr.net/gh/HongYunCloud/mio/aurora-ling/aurora-ling.js?v=1.0");
 		n.setAttribute("integrity", "sha512-lone7DTl2ZfgRrNBQFQKChylkb7WnOpefMrzlNahs66MM8cTYgOwXl1MPUgZG5reD7PP4hDG2RDe4EWLQOPW9A==");
 		n.onload = () => n.remove();
 		document.head.appendChild(n);
