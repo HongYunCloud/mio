@@ -15,7 +15,7 @@ setTimeout(
 		n.setAttribute("language", "JavaScript");
 		n.setAttribute("crossorigin", "anonymous");
 		n.setAttribute("src", "https://cdn.jsdelivr.net/gh/HongYunCloud/mio/aurora-ling/aurora-ling.js");
-		n.setAttribute("integrity", "sha512-z4PhNX7vuL3xVChQ1m2AB9Yg5AULVxXcg/SpIdNs6c5H0NE8XYXysP+DGNKHfuwvY7kxvUdBeoGlODJ6+SfaPg==");
+		n.setAttribute("integrity", "sha512-lone7DTl2ZfgRrNBQFQKChylkb7WnOpefMrzlNahs66MM8cTYgOwXl1MPUgZG5reD7PP4hDG2RDe4EWLQOPW9A==");
 		n.onload = () => n.remove();
 		document.head.appendChild(n);
 	},
