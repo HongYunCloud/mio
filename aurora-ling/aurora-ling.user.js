@@ -4,6 +4,7 @@
 // @version 1.0
 // @description aurora-ling
 // @author Razor
+// @downloadURL https://cdn.jsdelivr.net/gh/HongYunCloud/mio/aurora-ling/aurora-ling.user.js
 // @match https://www.bondage-europe.com/R*
 // @grant none
 // @run-at document-end
