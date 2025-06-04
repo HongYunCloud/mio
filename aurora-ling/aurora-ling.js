@@ -15,12 +15,11 @@ window.auroraling = (()=> {
 	const modApi = bcModSDK.registerMod({
 		name: 'AuroraLing2',
 		fullName: '澪的欧若拉之翼',
-		version: '1.0.0',
+		version: '1.0.1',
 		// Optional - Link to the source code of the mod
 		// repository: 'https://github.com/Jomshir98/bondage-club-mod-sdk',
 	});
 
-	// max value
 	let latestCallTime = Number.MAX_VALUE;
 
 	async function AuroraSleep(ms) {
@@ -62,60 +61,68 @@ window.auroraling = (()=> {
 
 		if (Date.now() - latestCallTime < 2 * 60 * 1000) {
 			AuroraSendEmote("五彩的雷光划破夜空，北风狼王现身于房间之中。");
-			await AuroraSleep(1)
+			await AuroraSleep(1);
 			AuroraSendEmote("北风狼王威严地巡视着四周，目光掠过每一个角落。");
 			if (isSafe) {
-				await AuroraSleep(2)
-				AuroraSendEmote("北风狼王的目光最后停留在雷泽身上，宠溺的抚着狼崽的脑袋：狼崽，照顾好来自异世界的旅人。")
+				await AuroraSleep(2);
+				AuroraSendEmote("北风狼王的目光最后停留在雷泽身上，宠溺的抚着狼崽的脑袋：狼崽，照顾好来自异世界的旅人。");
 			}
 		} else {
-			AuroraSendEmote("这一次，北风狼王裹挟着更为磅礴的雷电现身。")
-			await AuroraSleep(1)
-			AuroraSendEmote("空气中弥漫着雷鸣与风暴的气息，强大的力量让人无法直视。")
-			await AuroraSleep(2)
-			AuroraSendEmote("这次北风狼王毫不犹豫地释放雷电，房间中的每个人都能感受到狼王无可匹敌的庇佑。")
-			ReleaseGlobal(false)
+			AuroraSendEmote("这一次，北风狼王裹挟着更为磅礴的雷电现身。");
+			await AuroraSleep(1);
+			AuroraSendEmote("空气中弥漫着雷鸣与风暴的气息，强大的力量让人无法直视。");
+			await AuroraSleep(2);
+			AuroraSendEmote("这次北风狼王毫不犹豫地释放雷电，房间中的每个人都能感受到狼王无可匹敌的庇佑。");
+			ReleaseGlobal(false);
 		}
-		await AuroraSleep(2)
-		AuroraSendEmote("北风狼王的身影渐渐消散，房间恢复平静。")
+		await AuroraSleep(2);
+		AuroraSendEmote("北风狼王的身影渐渐消散，房间恢复平静。");
 	});
 
 	const hardKeyWord = (async () => {
-		AuroraSendEmote(Player.Nickname + "的欧若拉之翼闪现出一丝不易察觉的电光向天空飘去。")
-		await AuroraSleep(1)
-		ReleaseGlobal(true)
-		AuroraSendEmote("此刻，北风狼王的眼中只剩下" + Player.Nickname + "的安危，只有令所有威胁彻底消失的坚定与肃杀。")
-		await AuroraSleep(1)
-		AuroraSendEmote("北风狼王将" + Player.Nickname + "紧紧护在身后，仿佛要将她与世界隔绝开来。")
+		AuroraSendEmote(Player.Nickname + "的欧若拉之翼闪现出一丝不易察觉的电光向天空飘去。");
+		await AuroraSleep(1);
+		ReleaseGlobal(true);
+		AuroraSendEmote("此刻，北风狼王的眼中只剩下" + Player.Nickname + "的安危，只有令所有威胁彻底消失的坚定与肃杀。");
+		await AuroraSleep(1);
+		AuroraSendEmote("北风狼王将" + Player.Nickname + "紧紧护在身后，仿佛要将她与世界隔绝开来。");
 	});
 
+	let isTaskPending = false;
 	modApi.hookFunction('ChatRoomMenuDraw', 4, (args, next) => {
 		if (window.CurrentScreen == "ChatRoom") {
 			DrawButton(910, 0, 90, 45, "呼叫狼王", "White", "", "");
 			DrawButton(910, 45, 90, 45, "强行解救", "White", "", "");
 		}
-		next(args)
-	})
+		next(args);
+	});
 
-	let lastTask = null;
 	modApi.hookFunction('ChatRoomClick', 4, (args, next) => {
 		if (window.CurrentScreen == "ChatRoom") {
-			if (lastTask == null || !lastTask.isPending()) {
+			if (!isTaskPending) {
 				if ((MouseX >= 910) && (MouseX < 1000) && (MouseY >= 0) && (MouseY < 45)) {
-					lastTask = softKeyWord()
+					isTaskPending = true;
+					softKeyWord()
 						.catch(err => console.error("AuroraLing softKeyWord error:", err))
-						.then(() => console.log("AuroraLing softKeyWord executed"));
+						.then(() => {
+							console.log("AuroraLing softKeyWord executed");
+							isTaskPending = false;
+						});
 					return;
 				} else if ((MouseX >= 910) && (MouseX < 1000) && (MouseY >= 45) && (MouseY < 90)) {
-					lastTask = hardKeyWord()
+					isTaskPending = true;
+					hardKeyWord()
 						.catch(err => console.error("AuroraLing hardKeyWord error:", err))
-						.then(() => console.log("AuroraLing hardKeyWord executed"));
+						.then(() => {
+							console.log("AuroraLing hardKeyWord executed");
+							isTaskPending = false;
+						});
 					return;
 				}
 			}
 		}
-		next(args)
-	})
+		next(args);
+	});
 
 	return {
 		softKeyWord: () => softKeyWord().catch(err => console.error("AuroraLing softKeyWord error:", err)),
