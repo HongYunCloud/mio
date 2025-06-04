@@ -57,11 +57,11 @@ window.auroraling = (()=> {
 			latestCallTime = Math.min(latestCallTime, Date.now());
 		}
 
-		AuroraSendEmote("澪的欧若拉之翼闪现出一丝不易察觉的电光向天空飘去。")
-		await AuroraSleep(5)
+		AuroraSendEmote(Player.Nickname + "的欧若拉之翼闪现出一丝不易察觉的电光向天空飘去。");
+		await AuroraSleep(5);
 
 		if (Date.now() - latestCallTime < 2 * 60 * 1000) {
-			AuroraSendEmote("五彩的雷光划破夜空，北风狼王现身于房间之中。")
+			AuroraSendEmote("五彩的雷光划破夜空，北风狼王现身于房间之中。");
 			await AuroraSleep(1)
 			AuroraSendEmote("北风狼王威严地巡视着四周，目光掠过每一个角落。");
 			if (isSafe) {
@@ -81,12 +81,12 @@ window.auroraling = (()=> {
 	});
 
 	const hardKeyWord = (async () => {
-		AuroraSendEmote("澪的欧若拉之翼闪现出一丝不易察觉的电光向天空飘去。")
+		AuroraSendEmote(Player.Nickname + "的欧若拉之翼闪现出一丝不易察觉的电光向天空飘去。")
 		await AuroraSleep(1)
 		ReleaseGlobal(true)
-		AuroraSendEmote("此刻，北风狼王的眼中只剩下澪的安危，只有令所有威胁彻底消失的坚定与肃杀。")
+		AuroraSendEmote("此刻，北风狼王的眼中只剩下" + Player.Nickname + "的安危，只有令所有威胁彻底消失的坚定与肃杀。")
 		await AuroraSleep(1)
-		AuroraSendEmote("北风狼王将澪紧紧护在身后，仿佛要将她与世界隔绝开来。")
+		AuroraSendEmote("北风狼王将" + Player.Nickname + "紧紧护在身后，仿佛要将她与世界隔绝开来。")
 	});
 
 	modApi.hookFunction('ChatRoomMenuDraw', 4, (args, next) => {
