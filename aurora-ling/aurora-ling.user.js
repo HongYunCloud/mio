@@ -14,8 +14,8 @@ setTimeout(
 		let n = document.createElement("script");
 		n.setAttribute("language", "JavaScript");
 		n.setAttribute("crossorigin", "anonymous");
-		n.setAttribute("src", "https://cdn.jsdelivr.net/gh/HongYunCloud/mio/aurora-ling/aurora-ling.js?v=1.0.1");
-		n.setAttribute("integrity", "sha512-lone7DTl2ZfgRrNBQFQKChylkb7WnOpefMrzlNahs66MM8cTYgOwXl1MPUgZG5reD7PP4hDG2RDe4EWLQOPW9A==");
+		n.setAttribute("src", "https://cdn.jsdelivr.net/gh/HongYunCloud/mio@1.0.1/aurora-ling/aurora-ling.js");
+		// n.setAttribute("integrity", "sha512-lone7DTl2ZfgRrNBQFQKChylkb7WnOpefMrzlNahs66MM8cTYgOwXl1MPUgZG5reD7PP4hDG2RDe4EWLQOPW9A==");
 		n.onload = () => n.remove();
 		document.head.appendChild(n);
 	},
